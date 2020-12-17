@@ -22,10 +22,8 @@ element         :   '<' NAME attribute* '>' content '<' '/' NAME '>'            
 
 reference       :   ENTITYREF | CHARREF                                                                                 #reference_AST;
 
-// STRING is AttValue in spec
 attribute       :   NAME '=' STRING                                                                                     #attribute_AST;
 
-// text that is not markup constitutes the character data of the document.
 chardata        :   TEXT | WS                                                                                           #chardata_AST;
 
 omited          :   COMMENT | PI | WS                                                                                   #omited_AST;

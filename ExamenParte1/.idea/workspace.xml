@@ -57,26 +57,26 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608222313150" />
-    <state width="1557" height="202" key="GridCell.Tab.0.bottom" timestamp="1608243163637">
+    <state width="1557" height="202" key="GridCell.Tab.0.bottom" timestamp="1608244688220">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="202" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608243163637" />
-    <state width="1557" height="202" key="GridCell.Tab.0.center" timestamp="1608243163637">
+    <state width="1557" height="202" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608244688220" />
+    <state width="1557" height="202" key="GridCell.Tab.0.center" timestamp="1608244688220">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="202" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608243163637" />
-    <state width="1557" height="202" key="GridCell.Tab.0.left" timestamp="1608243163636">
+    <state width="1557" height="202" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608244688220" />
+    <state width="1557" height="202" key="GridCell.Tab.0.left" timestamp="1608244688219">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="202" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608243163636" />
-    <state width="1557" height="202" key="GridCell.Tab.0.right" timestamp="1608243163637">
+    <state width="1557" height="202" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608244688219" />
+    <state width="1557" height="202" key="GridCell.Tab.0.right" timestamp="1608244688220">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="202" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608243163637" />
-    <state x="476" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1608242588983">
+    <state width="1557" height="202" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608244688220" />
+    <state x="476" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1608243909706">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="476" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608242588983" />
+    <state x="476" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608243909706" />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">
