@@ -1,0 +1,46 @@
+<messages>
+      <!-- Notas del msj-->
+      <note id="501">
+        <to>Tove</to>
+        <from>Jani</from>
+        <heading>Reminder</heading>
+        <body>Donot forget me this weekend</body>
+      </note>
+      <note id="502">
+        <to>Jani</to>
+        <from>Tove</from>
+        <heading>Re: Reminder</heading>
+        <body>I will not</body>
+      </note>
+      <!-- permite agregar msjs dentro de msjs-->
+          <messages>
+            <note id="503">
+              <to>Tove</to>
+              <from>Test</from>
+              <heading>Reminder</heading>
+              <body>Donot forget me this weekend</body>
+            </note>
+            <note id="504">
+              <to>TEST</to>
+              <from>Tove</from>
+              <heading>Re: Reminder</heading>
+              <body>I will not</body>
+            </note>
+          </messages>
+</messages>
+
+<--!Esta area siguiente no debe ser incluida -->
+<messages>
+  <note id="503">
+    <to>Probando uso de declaraciones afuera</to>
+    <from>Test</from>
+    <heading>Reminder</heading>
+    <body>Es un error? </body>
+  </note>
+  <note id="504">
+    <to>TEST 1</to>
+    <from>Test 2</from>
+    <heading>Re: No lo es, ya que no se toma en cuenta</heading>
+    <body>I will not</body>
+  </note>
+</messages>
