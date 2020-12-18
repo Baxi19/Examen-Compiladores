@@ -14,7 +14,8 @@ singleCommand   :ident ASIGN expression                                         
                 | WHILE expression DO singleCommand                                                                     #whileSingleCommandAST
                 | LET declaration IN singleCommand                                                                      #letSingleCommandAST
                 | BEGIN command END                                                                                     #blockSingleCommandAST
-                | RETURN expression                                                                                     #returnSingleCommandAST;
+                | RETURN expression                                                                                     #returnSingleCommandAST
+                | printExpression                                                                                       #printAST;
 
 declaration     : singleDeclaration (PyCOMA singleDeclaration)*                                                         #declarationAST;
 
@@ -54,6 +55,10 @@ comparation     : LT                                                            
                 | NOT_EQUAL                                                                                             #diferenteAST
                 | AND                                                                                                   #andAST
                 | OR                                                                                                    #orAST;
+
+//-------------------------------------------------------------------------------------------------------------------
+//puts ( ... )
+printExpression                 : PUTS PIZQ expression PDER                                                             #printExpressionAST;
 
 ident
 locals [SingleDeclarationContext decl = null]: IDENT                                                                    #identAST;

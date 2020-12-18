@@ -3,16 +3,46 @@ package code_generation;
 import generated.AlphaParser;
 import generated.AlphaParserBaseVisitor;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class CodeInterprete extends AlphaParserBaseVisitor {
+    private int letmain;
+    private int indice;
+    private ArrayList<String> codigo;
+    private TablaSimbolos tablaIDS;
 
     // Constructor
     public CodeInterprete() {
+        this.letmain=-1;
+        this.indice=0;
+        this.codigo= new ArrayList<>();
+        this.tablaIDS = new TablaSimbolos();
+    }
+
+    //generate method
+    private void generar(int indice, String instr, Object param){
+        if (param!=null)
+            this.codigo.add(indice + " " + instr + " " + param);
+        else
+            this.codigo.add(indice + " " + instr);
+        this.indice++;
+    }
+
+    @Override
+    public String toString() {
+        String result="";
+        for (String s : codigo){
+            result+= s + '\n';
+        }
+        return result;
     }
 
     // Override Methods
     @Override
     public Object visitProgramAST(AlphaParser.ProgramASTContext ctx) {
         visit(ctx.singleCommand());
+        System.out.println(this.toString());
         return null;
     }
 
@@ -81,6 +111,7 @@ public class CodeInterprete extends AlphaParserBaseVisitor {
     public Object visitReturnSingleCommandAST(AlphaParser.ReturnSingleCommandASTContext ctx) {
         //return
         visit(ctx.expression());
+        this.generar(this.indice,"RETURN_VALUE",null);
         return null;
     }
 
@@ -129,11 +160,18 @@ public class CodeInterprete extends AlphaParserBaseVisitor {
     @Override
     public Object visitFormalParamListAST(AlphaParser.FormalParamListASTContext ctx) {
         //parameters
-        if(!ctx.typeDenoter().isEmpty()){
+        for(int i=0; i < ctx.IDENT().size(); i++) {
+            this.tablaIDS.insertar(ctx.IDENT(i).getSymbol(),0,null);
+            this.generar(this.indice,"PUSH_LOCAL_I",ctx.IDENT(i).getText());
+        }
+
+        /*if(!ctx.typeDenoter().isEmpty()){
             for (int i = 0; i < ctx.typeDenoter().size(); i++) {
                 visit(ctx.typeDenoter(i));
             }
         }
+
+         */
         return null;
     }
 
@@ -216,7 +254,7 @@ public class CodeInterprete extends AlphaParserBaseVisitor {
         for (int i = 0; i < ctx.expression().size(); i++) {
             visit(ctx.expression(i));
         }
-        return null;
+        return ctx.expression().size();
     }
 
     @Override
@@ -286,6 +324,18 @@ public class CodeInterprete extends AlphaParserBaseVisitor {
     @Override
     public Object visitIdentAST(AlphaParser.IdentASTContext ctx) {
         visit(ctx.IDENT());
+        return null;
+    }
+
+    @Override
+    public Object visitPrintAST(AlphaParser.PrintASTContext ctx) {
+        visit(ctx.printExpression());
+        return null;
+    }
+
+    @Override
+    public Object visitPrintExpressionAST(AlphaParser.PrintExpressionASTContext ctx) {
+        visit(ctx.expression());
         return null;
     }
 }

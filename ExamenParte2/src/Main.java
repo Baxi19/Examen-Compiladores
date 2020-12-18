@@ -5,6 +5,7 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import vm.Program;
 
 public class Main {
 
@@ -24,7 +25,8 @@ public class Main {
             codeInterprete.visit(tree);
 
             System.out.println("Compilación Terminada");
-
+            String path =  System.getProperty("user.dir") + "\\src\\vm\\machine_code.txt";
+            Program program = new Program(path);
         }
         catch(Exception e){System.out.println("No hay archivo");e.printStackTrace();}
     }

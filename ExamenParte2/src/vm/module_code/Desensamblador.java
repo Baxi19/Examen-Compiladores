@@ -2,11 +2,16 @@ package vm.module_code;
 
 import vm.module_Interpreter.InstructionSet;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Desensamblador {
     public InstructionSet setInstrucciones;
@@ -28,12 +33,11 @@ public class Desensamblador {
                         char starterChar = palabras[2].toCharArray()[0];
                         if (starterChar == '\''){
                             setInstrucciones.addInst(palabras[1], palabras[2].replace("\'",""));//Si el parámetro no es un char
-                        }else if ((starterChar == '"')){
+                        }else if ((starterChar == '\"')){
                             String word = "";
-                            for (int j = 2; i < palabras.length; i++){
+                            for (int j = 2; j < palabras.length; j++){
                                 word += (palabras[j]+" ");
                             }
-                            //Console.WriteLine("DATA: " + word);
                             setInstrucciones.addInst(palabras[1], word.replace("\"",""));//Si el parámetro no es un string
                         }else{
                             setInstrucciones.addInst(palabras[1], palabras[2]);//Si el parámetro no es un número válido para evitar error

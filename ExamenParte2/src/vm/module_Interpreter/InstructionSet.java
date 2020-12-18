@@ -137,7 +137,7 @@ public class InstructionSet {
 
     private void runCALL_FUNCTION(int numparams){
         try{
-            int actualRef = ( int ) myStackExprs.pop(); //el primer elemento de la pila trae la referencia del método a llamar --REVISAR SI FALTA SUMAR O NO A LA REFERENCIA
+            int actualRef = Integer.parseInt(myStackExprs.pop().toString()); //el primer elemento de la pila trae la referencia del método a llamar --REVISAR SI FALTA SUMAR O NO A LA REFERENCIA
             if (actualRef == -1){
                 // es porque es el método print
                 Object data = myStackExprs.pop();
@@ -208,7 +208,7 @@ public class InstructionSet {
         try{
             Object returnValue;
             returnValue = myStackExprs.pop(); // el tope de la pila tiene el elemento a retornar
-            actualInstrIndex = ( int ) myStackExprs.pop(); //si no hay problem,a, el tope de la pila tiene ahora la dirección a la que de sebe "saltar" que estaba respaldada
+            actualInstrIndex = Integer.parseInt(myStackExprs.pop().toString()); //si no hay problem,a, el tope de la pila tiene ahora la dirección a la que de sebe "saltar" que estaba respaldada
             myStackExprs.push(returnValue); //se vuelve a meter en la pila el retorno para lo que corresponda posteriormente
             //almacenLocal[almacenLocal.Count-1].printContainer();
             almacenLocal.remove(almacenLocal.size() - 1); // se elimina el almacenLocaL del método
@@ -219,7 +219,7 @@ public class InstructionSet {
 
     private void runRETURN(){
         try{
-            actualInstrIndex = ( int ) myStackExprs.pop(); //si no hay problema, el tope de la pila tiene ahora la dirección a la que de sebe "saltar" que estaba respaldad
+            actualInstrIndex = Integer.parseInt(myStackExprs.pop().toString()); //si no hay problema, el tope de la pila tiene ahora la dirección a la que de sebe "saltar" que estaba respaldad
             //almacenLocal[almacenLocal.Count-1].printContainer();
 
             almacenLocal.remove(almacenLocal.size() - 1); // se elimina el almacenLocaL del método

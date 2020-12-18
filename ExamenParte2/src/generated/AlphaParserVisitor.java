@@ -74,6 +74,13 @@ public interface AlphaParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitReturnSingleCommandAST(AlphaParser.ReturnSingleCommandASTContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code printAST}
+	 * labeled alternative in {@link AlphaParser#singleCommand}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintAST(AlphaParser.PrintASTContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code declarationAST}
 	 * labeled alternative in {@link AlphaParser#declaration}.
 	 * @param ctx the parse tree
@@ -276,6 +283,13 @@ public interface AlphaParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitOrAST(AlphaParser.OrASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code printExpressionAST}
+	 * labeled alternative in {@link AlphaParser#printExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintExpressionAST(AlphaParser.PrintExpressionASTContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code identAST}
 	 * labeled alternative in {@link AlphaParser#ident}.
