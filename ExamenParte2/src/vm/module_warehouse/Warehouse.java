@@ -1,18 +1,17 @@
 package vm.module_warehouse;
 
-import java.util.Dictionary;
-import java.util.Hashtable;
+import java.util.HashMap;
 
 public class Warehouse {
     // PRELIMINARY DATA STRUCTURE:
-    Hashtable<String, Object> data ;
-    //Dictionary<String, Object> data;
+    HashMap<String, Object> data ;
+
     // -----------------------------
     private String name;
 
     // constructor
     public Warehouse(String name){
-        this.data = new Hashtable<String, Object>();
+        this.data = new HashMap<String, Object>();
         this.name = name;
     }
 

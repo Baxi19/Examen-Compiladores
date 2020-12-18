@@ -116,12 +116,33 @@ public interface AlphaParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFormalParamListAST(AlphaParser.FormalParamListASTContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code typeDenoterAST}
+	 * Visit a parse tree produced by the {@code typeDenoterStringAST}
 	 * labeled alternative in {@link AlphaParser#typeDenoter}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTypeDenoterAST(AlphaParser.TypeDenoterASTContext ctx);
+	T visitTypeDenoterStringAST(AlphaParser.TypeDenoterStringASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code typeDenoterBooleanAST}
+	 * labeled alternative in {@link AlphaParser#typeDenoter}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeDenoterBooleanAST(AlphaParser.TypeDenoterBooleanASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code typeDenoterIntAST}
+	 * labeled alternative in {@link AlphaParser#typeDenoter}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeDenoterIntAST(AlphaParser.TypeDenoterIntASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code typeDenoterIdentAST}
+	 * labeled alternative in {@link AlphaParser#typeDenoter}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeDenoterIdentAST(AlphaParser.TypeDenoterIdentASTContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code expressionComparationAST}
 	 * labeled alternative in {@link AlphaParser#expression}.

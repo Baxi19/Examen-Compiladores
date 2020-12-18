@@ -138,8 +138,26 @@ public class CodeInterprete extends AlphaParserBaseVisitor {
     }
 
     @Override
-    public Object visitTypeDenoterAST(AlphaParser.TypeDenoterASTContext ctx) {
-        //type denoter
+    public Object visitTypeDenoterStringAST(AlphaParser.TypeDenoterStringASTContext ctx) {
+        //String
+        return null;
+    }
+
+    @Override
+    public Object visitTypeDenoterBooleanAST(AlphaParser.TypeDenoterBooleanASTContext ctx) {
+        //Boolean
+        return null;
+    }
+
+    @Override
+    public Object visitTypeDenoterIntAST(AlphaParser.TypeDenoterIntASTContext ctx) {
+        // INT
+        return null;
+    }
+
+    @Override
+    public Object visitTypeDenoterIdentAST(AlphaParser.TypeDenoterIdentASTContext ctx) {
+        //Ident
         return null;
     }
 

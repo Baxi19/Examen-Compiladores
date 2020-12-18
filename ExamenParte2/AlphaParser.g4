@@ -26,7 +26,10 @@ methodDeclaration: FN ident PIZQ formalParamList PDER DOSPUNTOS typeDenoter sing
 
 formalParamList : (IDENT DOSPUNTOS typeDenoter PyCOMA)*                                                                 #formalParamListAST;
 
-typeDenoter     : IDENT                                                                                                 #typeDenoterAST;
+typeDenoter     : STR                                                                                                   #typeDenoterStringAST
+                | BOOLEAN                                                                                               #typeDenoterBooleanAST
+                | INT                                                                                                   #typeDenoterIntAST
+                | IDENT                                                                                                 #typeDenoterIdentAST;
 
 expression      : primaryExpression (comparation primaryExpression)*                                                    #expressionComparationAST
                 | primaryExpression (operator primaryExpression)*                                                       #expressionOperatorAST;

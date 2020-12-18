@@ -1,6 +1,8 @@
 let
     var g1:int;
     var g2:int;
+    var g3:string;
+    var g4:boolean;
     fn sumatoria( x:int; ) : int
     let
         var sum : int
