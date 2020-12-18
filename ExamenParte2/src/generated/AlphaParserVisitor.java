@@ -123,12 +123,19 @@ public interface AlphaParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTypeDenoterAST(AlphaParser.TypeDenoterASTContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code expressionAST}
+	 * Visit a parse tree produced by the {@code expressionComparationAST}
 	 * labeled alternative in {@link AlphaParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpressionAST(AlphaParser.ExpressionASTContext ctx);
+	T visitExpressionComparationAST(AlphaParser.ExpressionComparationASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code expressionOperatorAST}
+	 * labeled alternative in {@link AlphaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressionOperatorAST(AlphaParser.ExpressionOperatorASTContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code numPrimaryExpressionAST}
 	 * labeled alternative in {@link AlphaParser#primaryExpression}.
@@ -165,11 +172,89 @@ public interface AlphaParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitActualParamListAST(AlphaParser.ActualParamListASTContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link AlphaParser#operator}.
+	 * Visit a parse tree produced by the {@code sumaAST}
+	 * labeled alternative in {@link AlphaParser#operator}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOperator(AlphaParser.OperatorContext ctx);
+	T visitSumaAST(AlphaParser.SumaASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code restaAST}
+	 * labeled alternative in {@link AlphaParser#operator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRestaAST(AlphaParser.RestaASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code multAST}
+	 * labeled alternative in {@link AlphaParser#operator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMultAST(AlphaParser.MultASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code divAST}
+	 * labeled alternative in {@link AlphaParser#operator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDivAST(AlphaParser.DivASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code menorAST}
+	 * labeled alternative in {@link AlphaParser#comparation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMenorAST(AlphaParser.MenorASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code mayorAST}
+	 * labeled alternative in {@link AlphaParser#comparation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMayorAST(AlphaParser.MayorASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code menorIgualAST}
+	 * labeled alternative in {@link AlphaParser#comparation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMenorIgualAST(AlphaParser.MenorIgualASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code mayorIgualAST}
+	 * labeled alternative in {@link AlphaParser#comparation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMayorIgualAST(AlphaParser.MayorIgualASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code igualAST}
+	 * labeled alternative in {@link AlphaParser#comparation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIgualAST(AlphaParser.IgualASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code diferenteAST}
+	 * labeled alternative in {@link AlphaParser#comparation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDiferenteAST(AlphaParser.DiferenteASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code andAST}
+	 * labeled alternative in {@link AlphaParser#comparation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAndAST(AlphaParser.AndASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code orAST}
+	 * labeled alternative in {@link AlphaParser#comparation}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOrAST(AlphaParser.OrASTContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code identAST}
 	 * labeled alternative in {@link AlphaParser#ident}.
