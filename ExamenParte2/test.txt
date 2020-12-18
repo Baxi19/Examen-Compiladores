@@ -1,0 +1,19 @@
+let
+    var g1:int;
+    var g2:int;
+    fn sumatoria( x:int; ) : int
+    let
+        var sum : int
+    in
+    begin
+        g1:=1;
+        g2:=2;
+        if x then
+            sum := x + sumatoria(x-1;)
+        else
+            sum:=0;
+
+        return sum
+    end
+in
+    print(sumatoria(3;));
