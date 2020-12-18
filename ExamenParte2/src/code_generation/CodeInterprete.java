@@ -139,106 +139,135 @@ public class CodeInterprete extends AlphaParserBaseVisitor {
 
     @Override
     public Object visitTypeDenoterAST(AlphaParser.TypeDenoterASTContext ctx) {
-        return super.visitTypeDenoterAST(ctx);
+        //type denoter
+        return null;
     }
 
     @Override
     public Object visitExpressionComparationAST(AlphaParser.ExpressionComparationASTContext ctx) {
-        return super.visitExpressionComparationAST(ctx);
+        //comparation
+        for (int i = 0; i < ctx.primaryExpression().size(); i++) {
+            visit(ctx.primaryExpression(i));
+            if(i != ctx.primaryExpression().size()-1){
+                visit(ctx.comparation(i));
+            }
+        }
+        return null;
     }
 
     @Override
     public Object visitExpressionOperatorAST(AlphaParser.ExpressionOperatorASTContext ctx) {
-        return super.visitExpressionOperatorAST(ctx);
+        //operator
+        for (int i = 0; i < ctx.primaryExpression().size(); i++) {
+            visit(ctx.primaryExpression(i));
+            if(i != ctx.primaryExpression().size()-1){
+                visit(ctx.operator(i));
+            }
+        }
+        return null;
     }
 
     @Override
     public Object visitNumPrimaryExpressionAST(AlphaParser.NumPrimaryExpressionASTContext ctx) {
-        return super.visitNumPrimaryExpressionAST(ctx);
+        visit(ctx.INTEGER());
+        return null;
     }
 
     @Override
     public Object visitIdPrimaryExpressionAST(AlphaParser.IdPrimaryExpressionASTContext ctx) {
-        return super.visitIdPrimaryExpressionAST(ctx);
+        visit(ctx.ident());
+        return null;
     }
 
     @Override
     public Object visitCallPrimaryExpression(AlphaParser.CallPrimaryExpressionContext ctx) {
-        return super.visitCallPrimaryExpression(ctx);
+        visit(ctx.ident());
+        visit(ctx.actualParamList());
+        return null;
     }
 
     @Override
     public Object visitGroupPrimaryExpressionAST(AlphaParser.GroupPrimaryExpressionASTContext ctx) {
-        return super.visitGroupPrimaryExpressionAST(ctx);
+        visit(ctx.expression());
+        return null;
     }
 
     @Override
     public Object visitActualParamListAST(AlphaParser.ActualParamListASTContext ctx) {
-        return super.visitActualParamListAST(ctx);
+        //parameters
+        for (int i = 0; i < ctx.expression().size(); i++) {
+            visit(ctx.expression(i));
+        }
+        return null;
     }
 
     @Override
     public Object visitSumaAST(AlphaParser.SumaASTContext ctx) {
-        return super.visitSumaAST(ctx);
+        //suma
+        return "+";
     }
 
     @Override
     public Object visitRestaAST(AlphaParser.RestaASTContext ctx) {
-        return super.visitRestaAST(ctx);
+        //resta
+        return "-";
     }
 
     @Override
     public Object visitMultAST(AlphaParser.MultASTContext ctx) {
-        return super.visitMultAST(ctx);
+        //multiplicacion
+        return "*";
     }
 
     @Override
     public Object visitDivAST(AlphaParser.DivASTContext ctx) {
-        return super.visitDivAST(ctx);
+        //division
+        return "/";
     }
 
     @Override
     public Object visitMenorAST(AlphaParser.MenorASTContext ctx) {
-        return super.visitMenorAST(ctx);
+        return "<";
     }
 
     @Override
     public Object visitMayorAST(AlphaParser.MayorASTContext ctx) {
-        return super.visitMayorAST(ctx);
+        return ">";
     }
 
     @Override
     public Object visitMenorIgualAST(AlphaParser.MenorIgualASTContext ctx) {
-        return super.visitMenorIgualAST(ctx);
+        return "<=";
     }
 
     @Override
     public Object visitMayorIgualAST(AlphaParser.MayorIgualASTContext ctx) {
-        return super.visitMayorIgualAST(ctx);
+        return ">=";
     }
 
     @Override
     public Object visitIgualAST(AlphaParser.IgualASTContext ctx) {
-        return super.visitIgualAST(ctx);
+        return "=";
     }
 
     @Override
     public Object visitDiferenteAST(AlphaParser.DiferenteASTContext ctx) {
-        return super.visitDiferenteAST(ctx);
+        return "!=";
     }
 
     @Override
     public Object visitAndAST(AlphaParser.AndASTContext ctx) {
-        return super.visitAndAST(ctx);
+        return "&";
     }
 
     @Override
     public Object visitOrAST(AlphaParser.OrASTContext ctx) {
-        return super.visitOrAST(ctx);
+        return "|";
     }
 
     @Override
     public Object visitIdentAST(AlphaParser.IdentASTContext ctx) {
-        return super.visitIdentAST(ctx);
+        visit(ctx.IDENT());
+        return null;
     }
 }

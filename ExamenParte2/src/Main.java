@@ -1,3 +1,4 @@
+import code_generation.CodeInterprete;
 import generated.AlphaScanner;
 import generated.AlphaParser;
 import org.antlr.v4.runtime.CharStream;
@@ -18,8 +19,10 @@ public class Main {
             inst = new generated.AlphaScanner(input);
             tokens = new CommonTokenStream(inst);
             AlphaParser p = new AlphaParser(tokens);
-
             tree = p.program();
+            CodeInterprete codeInterprete = new CodeInterprete();
+            codeInterprete.visit(tree);
+
             System.out.println("Compilación Terminada");
 
         }
