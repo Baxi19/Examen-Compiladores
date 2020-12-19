@@ -1,6 +1,6 @@
 package context_analisys;
 
-import context_analisys.IdentificationTable;
+
 import generated.AlphaParser;
 import generated.AlphaParserBaseVisitor;
 import org.antlr.v4.runtime.Token;
@@ -286,9 +286,12 @@ public class ContextAnalisys extends AlphaParserBaseVisitor {
     public Object visitTypeDenoterAST(AlphaParser.TypeDenoterASTContext ctx) {
         if(ctx.IDENT().getSymbol().getText().equals(("int"))){
             return 0;
-        }
-        else if(ctx.IDENT().getText().equals("char")){
+        }else if(ctx.IDENT().getText().equals("char")){
             return 1;
+        }else if(ctx.IDENT().getText().equals("string")){
+            return 2;
+        }else if(ctx.IDENT().getText().equals("boolean")){
+            return 3;
         }
         return -1;
     }
@@ -305,8 +308,7 @@ public class ContextAnalisys extends AlphaParserBaseVisitor {
                     return -1;
                 }
             }
-        }
-        else if(typeExpression == 1){
+        }else if(typeExpression == 1){
             if(ctx.primaryExpression().size() > 1){
                 String typeError = "Type Error: Can't operate char data type";
                 errorsList.add(typeError);
@@ -336,6 +338,16 @@ public class ContextAnalisys extends AlphaParserBaseVisitor {
     @Override
     public Object visitCharPEAST(AlphaParser.CharPEASTContext ctx) {
         return 1;
+    }
+
+    @Override
+    public Object visitStringPEAST(AlphaParser.StringPEASTContext ctx) {
+        return 2;
+    }
+
+    @Override
+    public Object visitBooleanPEAST(AlphaParser.BooleanPEASTContext ctx) {
+        return 3;
     }
 
     @Override

@@ -137,6 +137,20 @@ public interface AlphaParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpressionAST(AlphaParser.ExpressionASTContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code booleanPEAST}
+	 * labeled alternative in {@link AlphaParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBooleanPEAST(AlphaParser.BooleanPEASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code stringPEAST}
+	 * labeled alternative in {@link AlphaParser#primaryExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStringPEAST(AlphaParser.StringPEASTContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code numPEAST}
 	 * labeled alternative in {@link AlphaParser#primaryExpression}.
 	 * @param ctx the parse tree

@@ -34,12 +34,14 @@ typedenoter         : IDENT                                                     
 
 expression          : primaryExpression (operator primaryExpression)*               #expressionAST;
 
-primaryExpression   : NUM                                                           #numPEAST
+primaryExpression   : BOOLEAN                                                       #booleanPEAST
+                    | STRING                                                        #stringPEAST
+                    | NUM                                                           #numPEAST
                     | ident                                                         #identPEAST
                     | CHAR                                                          #charPEAST
                     | PIZQ expression PDER                                          #groupPEAST;
 
-operator            : SUM | SUB | MUL | DIV                                         #operatorAST;
+operator            : SUM | SUB | MUL | DIV | LT | GT | EQUAL | AND | OR            #operatorAST;
 
 ident
 locals [VarDeclASTContext decl=null]

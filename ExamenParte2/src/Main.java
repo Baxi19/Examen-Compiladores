@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import vm.CodeGenerator;
 import vm.Program;
 
 import javax.swing.*;
@@ -41,22 +42,20 @@ public class Main {
                 treeGUI.get().setVisible(true);
                 checkerVisistor.printErrors();
                 System.out.println("Compilation: Successful");
+
+                CodeGenerator codeGenerator = new CodeGenerator();
+                codeGenerator.visit(tree);
+                String path =  System.getProperty("user.dir") + "\\src\\vm\\machine_code.txt";
+
+                FileWriter myWriter = new FileWriter(path);
+                myWriter.write(codeGenerator.toString());
+                myWriter.close();
+                Program program = new Program(path);
             }
         } catch (Exception e) {
             System.out.println(e.toString());
             e.printStackTrace();
         }
-        /*
-            CodeGenerator codeGenerator = new CodeGenerator();
-            codeGenerator.visit(tree);
 
-            System.out.println("Compilación Terminada");
-            String path =  System.getProperty("user.dir") + "\\src\\vm\\machine_code.txt";
-
-            FileWriter myWriter = new FileWriter(path);
-            myWriter.write(codeGenerator.toString());
-            myWriter.close();
-            Program program = new Program(path);
-  */
     }
 }

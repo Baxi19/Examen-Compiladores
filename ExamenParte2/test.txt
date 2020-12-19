@@ -1,8 +1,10 @@
-// Single command global
+// global level
 let  // let nivel 0
-    var mivar: int;                                                         // declaración de variable 'mivar'nivel: 0
-    var x: char;                                                            // declaración de variable 'x' nivel: 0
-    const int constante ~ 7;                                                // declaración de constante 'constante'
+    var isbool:boolean;
+    var name:string;
+    var mivar: int;
+    var x: char;
+    const int constante ~ 7;
 
     int metodoprueba(var mivar2: int)                                       // declaración de método 'metodoprueba'
         let   //Dentro de los let solo van declarations (const/var/method)
@@ -13,10 +15,10 @@ let  // let nivel 0
             int metodoprueba3()                                             // Otro método anidado dentro de metodoprueba
                 return 420                                                  // es de tipo int entonces debe retornar un int
         in
-            //x := 45;                                                        // Da error ya que 'x' fue declarado de tipo entero
+            //x := 45;                                                       // Da error ya que 'x' fue declarado de tipo entero
             x := 'r';                                                        // Asigna valor de tipo char a una avriable char
-            // constante := 24;                                                 // Da error ya que intenta asignar valor a una constante
-            return 700 + 69;                                                 // Se pueden operar tipos enteros
+            // constante := 120;                                             // Da error ya que intenta asignar valor a una constante
+            return 10 + 45;                                                  // Se pueden operar tipos enteros
             return 'c'                                                // Por otro aldo, no se pueden operar valores de tipo char
     // fin del método 'metodoprueba'
 in
