@@ -6,7 +6,8 @@ del método  **runBINARY_OR** donde se encontró un error, al método en vez de 
 ## •   Operadores de comparación > < = and y or :star2:
 Se agrego una serie de operadores que permiten realizar diferentes tipos de comparaciones, entre los cuales se puede mencionar
 **(< ,>, =, !=)** además de los operadores lógicos **&** y **|**
-## •   Tipos boolean, int, string
+
+## •   Tipos boolean, int, string :four_leaf_clover:
 Se agregaron tipos de datos **boolean, int y string**, para poder definir los tipos de datos en funciones y variables
 
 ## •   Valores literales para cada tipo de dato :fire:
