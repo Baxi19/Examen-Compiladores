@@ -1,16 +1,18 @@
-# Instituto Tecnológico de Costa Rica
+---
 
-# Campus Tecnológico Local San Carlos
+## Instituto Tecnológico de Costa Rica
 
-# Escuela de Ingeniería en Computación
+## Campus Tecnológico Local San Carlos
 
-# Compiladores e Interpretes
+## Escuela de Ingeniería en Computación
 
-# Examen del curso
+## Compiladores e Interpretes
 
-# Randald Villegas Brenes
+## Examen del curso
 
-# II Semestre, 2020
+## Randald Villegas Brenes
+
+## II Semestre, 2020
 
 ---
 
