@@ -6,28 +6,28 @@ let  // let nivel 0
     var x: char;
     const int constante ~ 7;
 
-    int test1(var mivar2: int)                                       // declaración de método 'metodoprueba'
-        let   //Dentro de los let solo van declarations (const/var/method)
+    int test1(var mivar2: int)                                              // declaración de método 'test1'
+        let                                                                 //Dentro de los let solo van declarations (const/var/method)
             var mivar3: char;
-            char test2()                                            // declaración de método anidado 'metodoprueba2'
+            char test2()                                                    // declaración de método anidado 'test2'
                 return 't';                                                 // método de tipo char debe retornar char
             //  - fin del metodo anidado -
-            int test3()                                             // Otro método anidado dentro de metodoprueba
+            int test3()                                                     // Otro método anidado dentro de test1
                 return 420                                                  // es de tipo int entonces debe retornar un int
         in
             //x := 45;                                                       // Da error ya que 'x' fue declarado de tipo entero
             x := 'r';                                                        // Asigna valor de tipo char a una avriable char
             // constante := 120;                                             // Da error ya que intenta asignar valor a una constante
             return 10 + 45;                                                  // Se pueden operar tipos enteros
-            return 'c'                                                // Por otro aldo, no se pueden operar valores de tipo char
+            return 'c'                                                       // Por otro aldo, no se pueden operar valores de tipo char
     // fin del método 'test'
 in
-    let                                            // se crea otro metodo con el mismo nombre pero en otro nivel, así que como con las variabels es permitido
-        char test2(var variable : char)    // método de tipo char
-            return variable                        // retorna variable pasada por parámetro (de tipo char)
+    let                                                                      // se crea otro metodo con el mismo nombre pero en otro nivel, así que como con las variabels es permitido
+        char test2(var variable : char)                                      // método de tipo char
+            return variable                                                  // retorna variable pasada por parámetro (de tipo char)
     in
-        test2('7');              // llamada al metodo debe ser con el tipo de dato declarado
-        return 43;                       // Retornos fuera de metodos pueden ser de cualquier tipo de expression
+        test2('7');                                                          // llamada al metodo debe ser con el tipo de dato declarado
+        return 43;                                                           // Retornos fuera de metodos pueden ser de cualquier tipo de expression
         mivar := 19237;
 
         // Ejemplo de un if
@@ -52,4 +52,5 @@ in
         return 999
 
 // En resumen, el análisis sintáctico para el parser de Alpha estaría funcionando al 100%
-// Fin del código fuente
+// La Maquina Virtual se migro el codigo a java y esta trabajando 100%
+// La parte de generacion de codigo se avanzo bastante sin embargo no se pudo hacer que trabajara de manera funcional debido al tiempo =/

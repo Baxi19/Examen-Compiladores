@@ -3,6 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="7ca08810-5e50-4176-86ac-534d3a4f4d4f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/XMLScanner.g4" beforeDir="false" afterPath="$PROJECT_DIR$/XMLScanner.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ExamenParte2/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenParte2/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ExamenParte2/out/production/ExamenParte2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenParte2/out/production/ExamenParte2/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ExamenParte2/out/production/ExamenParte2/vm/CodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenParte2/out/production/ExamenParte2/vm/CodeGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ExamenParte2/out/production/ExamenParte2/vm/machine_code.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenParte2/out/production/ExamenParte2/vm/machine_code.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ExamenParte2/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenParte2/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ExamenParte2/src/vm/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenParte2/src/vm/CodeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ExamenParte2/src/vm/machine_code.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenParte2/src/vm/machine_code.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ExamenParte2/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenParte2/test.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,26 +75,27 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="580" y="185" key="FileChooserDialogImpl/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608222313150" />
-    <state width="1557" height="202" key="GridCell.Tab.0.bottom" timestamp="1608347960510">
+    <state width="1557" height="202" key="GridCell.Tab.0.bottom" timestamp="1608370787661">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="202" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608347960510" />
-    <state width="1557" height="202" key="GridCell.Tab.0.center" timestamp="1608347960510">
+    <state width="1557" height="202" key="GridCell.Tab.0.bottom/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608370787661" />
+    <state width="1557" height="202" key="GridCell.Tab.0.center" timestamp="1608370787661">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="202" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608347960510" />
-    <state width="1557" height="202" key="GridCell.Tab.0.left" timestamp="1608347960510">
+    <state width="1557" height="202" key="GridCell.Tab.0.center/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608370787661" />
+    <state width="1557" height="202" key="GridCell.Tab.0.left" timestamp="1608370787661">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="202" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608347960510" />
-    <state width="1557" height="202" key="GridCell.Tab.0.right" timestamp="1608347960510">
+    <state width="1557" height="202" key="GridCell.Tab.0.left/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608370787661" />
+    <state width="1557" height="202" key="GridCell.Tab.0.right" timestamp="1608370787661">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1557" height="202" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608347960510" />
-    <state x="476" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1608351084642">
+    <state width="1557" height="202" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608370787661" />
+    <state x="476" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1608370922706">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="476" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608351084642" />
+    <state x="476" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1608370922706" />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">

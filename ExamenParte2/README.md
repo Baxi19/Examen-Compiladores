@@ -5,7 +5,7 @@ del método  **runBINARY_OR** donde se encontró un error, al método en vez de 
 
 ## •   Operadores de comparación > < = and y or
 Se agrego una serie de operadores que permiten realizar diferentes tipos de comparaciones, entre los cuales se puede mencionar
-**(< ,>, <=, >=, =, !=)** además de los operadores lógicos **&** y **|**
+**(< ,>, =, !=)** además de los operadores lógicos **&** y **|**
 ## •   Tipos boolean, int, string
 Se agregaron tipos de datos **boolean, int y string**, para poder definir los tipos de datos en funciones y variables
 
@@ -18,4 +18,7 @@ Se trabajo el ambiente local y global de la misma manera que se realizo en clase
 ## •   Uso de métodos a todos los niveles posibles incluyendo un método predefinido para imprimir una expresión cualquiera.
 Para el uso de los métodos solo trabajan de manera global, si trabajan con niveles pero no quedo funcional
 
-
+## Resumen General
+- En resumen, el análisis sintáctico para el parser de Alpha estaría funcionando al 100%
+- La Maquina Virtual se migro el codigo a java y esta trabajando 100%
+- La parte de generacion de codigo se avanzo bastante sin embargo no se pudo hacer que trabajara de manera funcional debido al tiempo =/

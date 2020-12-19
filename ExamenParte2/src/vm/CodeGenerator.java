@@ -4,10 +4,10 @@ import context_analisys.IdentificationTable;
 import generated.AlphaParser;
 import generated.AlphaParserBaseVisitor;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class CodeGenerator  extends AlphaParserBaseVisitor {
+    private int letmain;
     private int indice;
     private LinkedList<String> codigo;
     private IdentificationTable table;
@@ -16,6 +16,7 @@ public class CodeGenerator  extends AlphaParserBaseVisitor {
 
     public CodeGenerator() {
         this.table = new IdentificationTable();
+        this.letmain=-1;
         this.indice=0;
         this.codigo= new LinkedList<String>();
     }
@@ -23,7 +24,7 @@ public class CodeGenerator  extends AlphaParserBaseVisitor {
     @Override
     public Object visitProgramAST(AlphaParser.ProgramASTContext ctx) {
         visit(ctx.singleCommand());
-        //System.out.println(this.toString());
+        System.out.println(this.toString());
         return null;
     }
 
@@ -37,8 +38,14 @@ public class CodeGenerator  extends AlphaParserBaseVisitor {
 
     @Override
     public Object visitAssignSCAST(AlphaParser.AssignSCASTContext ctx) {
-        visit(ctx.ident());
         visit(ctx.expression());
+        String name= (String) visit(ctx.ident());
+
+        if(letmain == 0)
+            this.generar(this.indice,"STORE_GLOBAL",name);
+        else
+            this.generar(this.indice,"STORE_FAST",name);
+
         return null;
     }
 
@@ -53,26 +60,51 @@ public class CodeGenerator  extends AlphaParserBaseVisitor {
 
     @Override
     public Object visitIfSCAST(AlphaParser.IfSCASTContext ctx) {
+        //if
         visit(ctx.expression());
-        for(int i = 0; i < ctx.singleCommand().size(); i++){
-            visit(ctx.singleCommand().get(i));
-        }
+        int tag1Index = this.indice;
+        this.generar(this.indice,"JUMP_IF_FALSE",-1);
+
+        //then
+        visit(ctx.singleCommand(0));
+        int tag2Index = this.indice;
+        this.generar(this.indice,"JUMP_ABSOLUTE",-1);
+        this.codigo.set(tag1Index, tag1Index+" "+"JUMP_IF_FALSE"+ " "+this.indice);
+
+        //else
+        visit(ctx.singleCommand(1));
+        this.codigo.set(tag2Index, tag2Index+" "+"JUMP_ABSOLUTE"+ " "+this.indice);
+
         return null;
     }
 
     @Override
     public Object visitWhileSCAST(AlphaParser.WhileSCASTContext ctx) {
-        visit(ctx.expression());
+        int tag1Index = this.indice;
+        this.generar(this.indice,"JUMP_ABSOLUTE",-1);
+        int tag2Index = this.indice;
         visit(ctx.singleCommand());
+        this.codigo.set(tag1Index, tag2Index+" "+"JUMP_ABSOLUTE"+ " "+this.indice);
+        visit(ctx.expression());
+        this.generar(this.indice,"JUMP_IF_TRUE",tag2Index);
+
         return null;
     }
 
     @Override
     public Object visitLetSCAST(AlphaParser.LetSCASTContext ctx) {
-        //table.openScope();
+        this.letmain++;
+        this.table.openScope();
         visit(ctx.declaration());
-        visit(ctx.command());
-        //table.closeScope();
+        if (this.letmain==0) {
+            this.generar(this.indice,"DEF","Main");
+            visit(ctx.declaration());
+            this.generar(this.indice,"END",null);
+        }
+        else
+            visit(ctx.command());
+        this.letmain--;
+        this.table.closeScope();
         return null;
     }
 
@@ -87,7 +119,7 @@ public class CodeGenerator  extends AlphaParserBaseVisitor {
     @Override
     public Object visitReturnSCAST(AlphaParser.ReturnSCASTContext ctx) {
         visit(ctx.expression());
-        //this.generar(this.indice,"RETURN_VALUE",null);
+        this.generar(this.indice,"RETURN_VALUE",null);
         return null;
     }
 
@@ -171,29 +203,39 @@ public class CodeGenerator  extends AlphaParserBaseVisitor {
     @Override
     public Object visitBooleanPEAST(AlphaParser.BooleanPEASTContext ctx) {
         //boolean
+        this.generar(this.indice,"LOAD_CONST",ctx.BOOLEAN().getText());
         return 3;
     }
 
     @Override
     public Object visitStringPEAST(AlphaParser.StringPEASTContext ctx) {
         //String
+        this.generar(this.indice,"LOAD_CONST",ctx.STRING().getText());
         return 2;
     }
 
     @Override
     public Object visitNumPEAST(AlphaParser.NumPEASTContext ctx) {
         //num
+        this.generar(this.indice,"LOAD_CONST",ctx.NUM().getText());
         return 0;
     }
 
     @Override
     public Object visitIdentPEAST(AlphaParser.IdentPEASTContext ctx) {
+        String name= (String) visit(ctx.ident());
+
+        if(letmain == 0)
+            this.generar(this.indice,"LOAD_GLOBAL",name);
+        else
+            this.generar(this.indice,"LOAD_FAST",name);
 
         return null;
     }
 
     @Override
     public Object visitCharPEAST(AlphaParser.CharPEASTContext ctx) {
+        this.generar(this.indice,"LOAD_CONST",ctx.CHAR().getText());
         return 1;
     }
 
@@ -207,22 +249,31 @@ public class CodeGenerator  extends AlphaParserBaseVisitor {
     public Object visitOperator(AlphaParser.OperatorContext ctx) {
         String operator = "";
         if(ctx.MUL() != null){
+            this.generar(this.indice,"BINARY_MULTIPLY", null);
             operator = "*";
         }else if(ctx.DIV() != null){
+            this.generar(this.indice,"BINARY_DIVIDE", null);
             operator = "/";
         }else if(ctx.SUM() != null){
+            this.generar(this.indice,"BINARY_ADD",null);
             operator = "+";
         }else if(ctx.SUB() != null){
+            this.generar(this.indice,"BINARY_SUBSTRACT", null);
             operator = "-";
         }else if(ctx.LT() != null){
+            this.generar(this.indice,"COMPARE_OP", "<");
             operator = "<";
         }else if(ctx.GT() != null){
+            this.generar(this.indice,"COMPARE_OP", ">");
             operator = ">";
         }else if(ctx.EQUAL() != null){
+            this.generar(this.indice,"COMPARE_OP", "=");
             operator = "=";
         }else if(ctx.AND() != null){
+
             operator = "&";
         }else if(ctx.OR() != null){
+
             operator = "|";
         }
         return operator;

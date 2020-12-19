@@ -78,6 +78,6 @@ NAMESTARTCHAR
 // Handle <? ... ?>
 mode PROC_INSTR;
 
-PI          :   '?>'                    -> popMode ; // close <?...?>
+PI          :   '?>'                    -> popMode ; 
 
 IGNORE      :   .                       -> more ;

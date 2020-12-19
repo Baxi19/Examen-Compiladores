@@ -50,7 +50,7 @@ public class Main {
                 FileWriter myWriter = new FileWriter(path);
                 myWriter.write(codeGenerator.toString());
                 myWriter.close();
-                Program program = new Program(path);
+                //Program program = new Program(path);
             }
         } catch (Exception e) {
             System.out.println(e.toString());
