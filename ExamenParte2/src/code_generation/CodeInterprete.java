@@ -4,7 +4,7 @@ import generated.AlphaParser;
 import generated.AlphaParserBaseVisitor;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+
 
 public class CodeInterprete extends AlphaParserBaseVisitor {
     private int letmain;
@@ -176,24 +176,6 @@ public class CodeInterprete extends AlphaParserBaseVisitor {
     }
 
     @Override
-    public Object visitTypeDenoterStringAST(AlphaParser.TypeDenoterStringASTContext ctx) {
-        //String
-        return null;
-    }
-
-    @Override
-    public Object visitTypeDenoterBooleanAST(AlphaParser.TypeDenoterBooleanASTContext ctx) {
-        //Boolean
-        return null;
-    }
-
-    @Override
-    public Object visitTypeDenoterIntAST(AlphaParser.TypeDenoterIntASTContext ctx) {
-        // INT
-        return null;
-    }
-
-    @Override
     public Object visitTypeDenoterIdentAST(AlphaParser.TypeDenoterIdentASTContext ctx) {
         //Ident
         return null;
@@ -210,6 +192,8 @@ public class CodeInterprete extends AlphaParserBaseVisitor {
         }
         return null;
     }
+
+
 
     @Override
     public Object visitExpressionOperatorAST(AlphaParser.ExpressionOperatorASTContext ctx) {
@@ -326,16 +310,25 @@ public class CodeInterprete extends AlphaParserBaseVisitor {
         visit(ctx.IDENT());
         return null;
     }
-
+/*
     @Override
-    public Object visitPrintAST(AlphaParser.PrintASTContext ctx) {
-        visit(ctx.printExpression());
+    public Object visitExpressionTypeAST(AlphaParser.ExpressionTypeASTContext ctx) {
+        visit(ctx.typeLiteral());
+        return null;
+    }
+*/
+    @Override
+    public Object visitTypeDenoterStringAST(AlphaParser.TypeDenoterStringASTContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitPrintExpressionAST(AlphaParser.PrintExpressionASTContext ctx) {
-        visit(ctx.expression());
+    public Object visitTypeDenoterBooleanAST(AlphaParser.TypeDenoterBooleanASTContext ctx) {
+        return null;
+    }
+
+    @Override
+    public Object visitTypeDenoterIntAST(AlphaParser.TypeDenoterIntASTContext ctx) {
         return null;
     }
 }

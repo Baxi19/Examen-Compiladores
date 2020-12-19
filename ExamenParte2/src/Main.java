@@ -1,3 +1,4 @@
+import code_generation.CodeGenerator;
 import code_generation.CodeInterprete;
 import generated.AlphaScanner;
 import generated.AlphaParser;
@@ -6,6 +7,8 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import vm.Program;
+
+import java.io.FileWriter;
 
 public class Main {
 
@@ -21,11 +24,17 @@ public class Main {
             tokens = new CommonTokenStream(inst);
             AlphaParser p = new AlphaParser(tokens);
             tree = p.program();
-            CodeInterprete codeInterprete = new CodeInterprete();
-            codeInterprete.visit(tree);
+
+            CodeGenerator codeGenerator = new CodeGenerator();
+            codeGenerator.visit(tree);
 
             System.out.println("Compilación Terminada");
             String path =  System.getProperty("user.dir") + "\\src\\vm\\machine_code.txt";
+
+            FileWriter myWriter = new FileWriter(path);
+            myWriter.write(codeGenerator.toString());
+            myWriter.close();
+
             Program program = new Program(path);
         }
         catch(Exception e){System.out.println("No hay archivo");e.printStackTrace();}

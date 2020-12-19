@@ -74,13 +74,6 @@ public interface AlphaParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitReturnSingleCommandAST(AlphaParser.ReturnSingleCommandASTContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code printAST}
-	 * labeled alternative in {@link AlphaParser#singleCommand}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPrintAST(AlphaParser.PrintASTContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code declarationAST}
 	 * labeled alternative in {@link AlphaParser#declaration}.
 	 * @param ctx the parse tree
@@ -123,33 +116,19 @@ public interface AlphaParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFormalParamListAST(AlphaParser.FormalParamListASTContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code typeDenoterStringAST}
-	 * labeled alternative in {@link AlphaParser#typeDenoter}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeDenoterStringAST(AlphaParser.TypeDenoterStringASTContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code typeDenoterBooleanAST}
-	 * labeled alternative in {@link AlphaParser#typeDenoter}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeDenoterBooleanAST(AlphaParser.TypeDenoterBooleanASTContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code typeDenoterIntAST}
-	 * labeled alternative in {@link AlphaParser#typeDenoter}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTypeDenoterIntAST(AlphaParser.TypeDenoterIntASTContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code typeDenoterIdentAST}
 	 * labeled alternative in {@link AlphaParser#typeDenoter}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitTypeDenoterIdentAST(AlphaParser.TypeDenoterIdentASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code expressionIdentAST}
+	 * labeled alternative in {@link AlphaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpressionIdentAST(AlphaParser.ExpressionIdentASTContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code expressionComparationAST}
 	 * labeled alternative in {@link AlphaParser#expression}.
@@ -164,6 +143,27 @@ public interface AlphaParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitExpressionOperatorAST(AlphaParser.ExpressionOperatorASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code typeDenoterStringAST}
+	 * labeled alternative in {@link AlphaParser#typeLiteral}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeDenoterStringAST(AlphaParser.TypeDenoterStringASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code typeDenoterBooleanAST}
+	 * labeled alternative in {@link AlphaParser#typeLiteral}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeDenoterBooleanAST(AlphaParser.TypeDenoterBooleanASTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code typeDenoterIntAST}
+	 * labeled alternative in {@link AlphaParser#typeLiteral}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeDenoterIntAST(AlphaParser.TypeDenoterIntASTContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code numPrimaryExpressionAST}
 	 * labeled alternative in {@link AlphaParser#primaryExpression}.
@@ -283,13 +283,6 @@ public interface AlphaParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitOrAST(AlphaParser.OrASTContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code printExpressionAST}
-	 * labeled alternative in {@link AlphaParser#printExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPrintExpressionAST(AlphaParser.PrintExpressionASTContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code identAST}
 	 * labeled alternative in {@link AlphaParser#ident}.

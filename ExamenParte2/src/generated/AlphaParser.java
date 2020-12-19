@@ -26,14 +26,14 @@ public class AlphaParser extends Parser {
 	public static final int
 		RULE_program = 0, RULE_command = 1, RULE_singleCommand = 2, RULE_declaration = 3, 
 		RULE_singleDeclaration = 4, RULE_methodDeclaration = 5, RULE_formalParamList = 6, 
-		RULE_typeDenoter = 7, RULE_expression = 8, RULE_primaryExpression = 9, 
-		RULE_actualParamList = 10, RULE_operator = 11, RULE_comparation = 12, 
-		RULE_printExpression = 13, RULE_ident = 14;
+		RULE_typeDenoter = 7, RULE_expression = 8, RULE_typeLiteral = 9, RULE_primaryExpression = 10, 
+		RULE_actualParamList = 11, RULE_operator = 12, RULE_comparation = 13, 
+		RULE_ident = 14;
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"program", "command", "singleCommand", "declaration", "singleDeclaration", 
 			"methodDeclaration", "formalParamList", "typeDenoter", "expression", 
-			"primaryExpression", "actualParamList", "operator", "comparation", "printExpression", 
+			"typeLiteral", "primaryExpression", "actualParamList", "operator", "comparation", 
 			"ident"
 		};
 	}
@@ -344,24 +344,13 @@ public class AlphaParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class PrintASTContext extends SingleCommandContext {
-		public PrintExpressionContext printExpression() {
-			return getRuleContext(PrintExpressionContext.class,0);
-		}
-		public PrintASTContext(SingleCommandContext ctx) { copyFrom(ctx); }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof AlphaParserVisitor ) return ((AlphaParserVisitor<? extends T>)visitor).visitPrintAST(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 
 	public final SingleCommandContext singleCommand() throws RecognitionException {
 		SingleCommandContext _localctx = new SingleCommandContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_singleCommand);
 		int _la;
 		try {
-			setState(75);
+			setState(74);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
@@ -466,14 +455,6 @@ public class AlphaParser extends Parser {
 				expression();
 				}
 				break;
-			case 8:
-				_localctx = new PrintASTContext(_localctx);
-				enterOuterAlt(_localctx, 8);
-				{
-				setState(74);
-				printExpression();
-				}
-				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -525,21 +506,21 @@ public class AlphaParser extends Parser {
 			_localctx = new DeclarationASTContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(77);
+			setState(76);
 			singleDeclaration();
-			setState(82);
+			setState(81);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==PyCOMA) {
 				{
 				{
-				setState(78);
+				setState(77);
 				match(PyCOMA);
-				setState(79);
+				setState(78);
 				singleDeclaration();
 				}
 				}
-				setState(84);
+				setState(83);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -611,20 +592,20 @@ public class AlphaParser extends Parser {
 		SingleDeclarationContext _localctx = new SingleDeclarationContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_singleDeclaration);
 		try {
-			setState(94);
+			setState(93);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case CONST:
 				_localctx = new ConstSingleDeclarationASTContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(85);
+				setState(84);
 				match(CONST);
-				setState(86);
+				setState(85);
 				match(IDENT);
-				setState(87);
+				setState(86);
 				match(VIR);
-				setState(88);
+				setState(87);
 				expression();
 				}
 				break;
@@ -632,13 +613,13 @@ public class AlphaParser extends Parser {
 				_localctx = new VarSingleDeclarationASTContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(89);
+				setState(88);
 				match(VAR);
-				setState(90);
+				setState(89);
 				match(IDENT);
-				setState(91);
+				setState(90);
 				match(DOSPUNTOS);
-				setState(92);
+				setState(91);
 				typeDenoter();
 				}
 				break;
@@ -646,7 +627,7 @@ public class AlphaParser extends Parser {
 				_localctx = new MethodSingleDeclarationASTContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(93);
+				setState(92);
 				methodDeclaration();
 				}
 				break;
@@ -708,21 +689,21 @@ public class AlphaParser extends Parser {
 			_localctx = new MethodDeclararionASTContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(96);
+			setState(95);
 			match(FN);
-			setState(97);
+			setState(96);
 			ident();
-			setState(98);
+			setState(97);
 			match(PIZQ);
-			setState(99);
+			setState(98);
 			formalParamList();
-			setState(100);
+			setState(99);
 			match(PDER);
-			setState(101);
+			setState(100);
 			match(DOSPUNTOS);
-			setState(102);
+			setState(101);
 			typeDenoter();
-			setState(103);
+			setState(102);
 			singleCommand();
 			}
 		}
@@ -783,23 +764,23 @@ public class AlphaParser extends Parser {
 			_localctx = new FormalParamListASTContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(112);
+			setState(111);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==IDENT) {
 				{
 				{
-				setState(105);
+				setState(104);
 				match(IDENT);
-				setState(106);
+				setState(105);
 				match(DOSPUNTOS);
-				setState(107);
+				setState(106);
 				typeDenoter();
-				setState(108);
+				setState(107);
 				match(PyCOMA);
 				}
 				}
-				setState(114);
+				setState(113);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -827,35 +808,10 @@ public class AlphaParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class TypeDenoterStringASTContext extends TypeDenoterContext {
-		public TerminalNode STR() { return getToken(AlphaParser.STR, 0); }
-		public TypeDenoterStringASTContext(TypeDenoterContext ctx) { copyFrom(ctx); }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof AlphaParserVisitor ) return ((AlphaParserVisitor<? extends T>)visitor).visitTypeDenoterStringAST(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class TypeDenoterIntASTContext extends TypeDenoterContext {
-		public TerminalNode INT() { return getToken(AlphaParser.INT, 0); }
-		public TypeDenoterIntASTContext(TypeDenoterContext ctx) { copyFrom(ctx); }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof AlphaParserVisitor ) return ((AlphaParserVisitor<? extends T>)visitor).visitTypeDenoterIntAST(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class TypeDenoterBooleanASTContext extends TypeDenoterContext {
-		public TerminalNode BOOLEAN() { return getToken(AlphaParser.BOOLEAN, 0); }
-		public TypeDenoterBooleanASTContext(TypeDenoterContext ctx) { copyFrom(ctx); }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof AlphaParserVisitor ) return ((AlphaParserVisitor<? extends T>)visitor).visitTypeDenoterBooleanAST(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 	public static class TypeDenoterIdentASTContext extends TypeDenoterContext {
-		public TerminalNode IDENT() { return getToken(AlphaParser.IDENT, 0); }
+		public TypeLiteralContext typeLiteral() {
+			return getRuleContext(TypeLiteralContext.class,0);
+		}
 		public TypeDenoterIdentASTContext(TypeDenoterContext ctx) { copyFrom(ctx); }
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
@@ -868,43 +824,11 @@ public class AlphaParser extends Parser {
 		TypeDenoterContext _localctx = new TypeDenoterContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_typeDenoter);
 		try {
-			setState(119);
-			_errHandler.sync(this);
-			switch (_input.LA(1)) {
-			case STR:
-				_localctx = new TypeDenoterStringASTContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(115);
-				match(STR);
-				}
-				break;
-			case BOOLEAN:
-				_localctx = new TypeDenoterBooleanASTContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(116);
-				match(BOOLEAN);
-				}
-				break;
-			case INT:
-				_localctx = new TypeDenoterIntASTContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(117);
-				match(INT);
-				}
-				break;
-			case IDENT:
-				_localctx = new TypeDenoterIdentASTContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(118);
-				match(IDENT);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			_localctx = new TypeDenoterIdentASTContext(_localctx);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(114);
+			typeLiteral();
 			}
 		}
 		catch (RecognitionException re) {
@@ -949,6 +873,15 @@ public class AlphaParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
+	public static class ExpressionIdentASTContext extends ExpressionContext {
+		public TerminalNode IDENT() { return getToken(AlphaParser.IDENT, 0); }
+		public ExpressionIdentASTContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof AlphaParserVisitor ) return ((AlphaParserVisitor<? extends T>)visitor).visitExpressionIdentAST(this);
+			else return visitor.visitChildren(this);
+		}
+	}
 	public static class ExpressionOperatorASTContext extends ExpressionContext {
 		public List<PrimaryExpressionContext> primaryExpression() {
 			return getRuleContexts(PrimaryExpressionContext.class);
@@ -975,57 +908,150 @@ public class AlphaParser extends Parser {
 		enterRule(_localctx, 16, RULE_expression);
 		int _la;
 		try {
-			setState(139);
+			setState(135);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
-				_localctx = new ExpressionComparationASTContext(_localctx);
+				_localctx = new ExpressionIdentASTContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(121);
+				setState(116);
+				match(IDENT);
+				}
+				break;
+			case 2:
+				_localctx = new ExpressionComparationASTContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(117);
 				primaryExpression();
-				setState(127);
+				setState(123);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LE) | (1L << GE) | (1L << EQUAL) | (1L << NOT_EQUAL) | (1L << GT) | (1L << LT) | (1L << AND) | (1L << OR))) != 0)) {
 					{
 					{
-					setState(122);
+					setState(118);
 					comparation();
-					setState(123);
+					setState(119);
 					primaryExpression();
 					}
 					}
-					setState(129);
+					setState(125);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
 				}
 				break;
-			case 2:
+			case 3:
 				_localctx = new ExpressionOperatorASTContext(_localctx);
-				enterOuterAlt(_localctx, 2);
+				enterOuterAlt(_localctx, 3);
 				{
-				setState(130);
+				setState(126);
 				primaryExpression();
-				setState(136);
+				setState(132);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SUMA) | (1L << RESTA) | (1L << MULT) | (1L << DIV))) != 0)) {
 					{
 					{
-					setState(131);
+					setState(127);
 					operator();
-					setState(132);
+					setState(128);
 					primaryExpression();
 					}
 					}
-					setState(138);
+					setState(134);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
 				}
 				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class TypeLiteralContext extends ParserRuleContext {
+		public TypeLiteralContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_typeLiteral; }
+	 
+		public TypeLiteralContext() { }
+		public void copyFrom(TypeLiteralContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class TypeDenoterStringASTContext extends TypeLiteralContext {
+		public TerminalNode STR() { return getToken(AlphaParser.STR, 0); }
+		public TypeDenoterStringASTContext(TypeLiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof AlphaParserVisitor ) return ((AlphaParserVisitor<? extends T>)visitor).visitTypeDenoterStringAST(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class TypeDenoterIntASTContext extends TypeLiteralContext {
+		public TerminalNode INT() { return getToken(AlphaParser.INT, 0); }
+		public TypeDenoterIntASTContext(TypeLiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof AlphaParserVisitor ) return ((AlphaParserVisitor<? extends T>)visitor).visitTypeDenoterIntAST(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class TypeDenoterBooleanASTContext extends TypeLiteralContext {
+		public TerminalNode BOOLEAN() { return getToken(AlphaParser.BOOLEAN, 0); }
+		public TypeDenoterBooleanASTContext(TypeLiteralContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof AlphaParserVisitor ) return ((AlphaParserVisitor<? extends T>)visitor).visitTypeDenoterBooleanAST(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final TypeLiteralContext typeLiteral() throws RecognitionException {
+		TypeLiteralContext _localctx = new TypeLiteralContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_typeLiteral);
+		try {
+			setState(140);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case STR:
+				_localctx = new TypeDenoterStringASTContext(_localctx);
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(137);
+				match(STR);
+				}
+				break;
+			case BOOLEAN:
+				_localctx = new TypeDenoterBooleanASTContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(138);
+				match(BOOLEAN);
+				}
+				break;
+			case INT:
+				_localctx = new TypeDenoterIntASTContext(_localctx);
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(139);
+				match(INT);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1102,16 +1128,16 @@ public class AlphaParser extends Parser {
 
 	public final PrimaryExpressionContext primaryExpression() throws RecognitionException {
 		PrimaryExpressionContext _localctx = new PrimaryExpressionContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_primaryExpression);
+		enterRule(_localctx, 20, RULE_primaryExpression);
 		try {
-			setState(152);
+			setState(153);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				_localctx = new NumPrimaryExpressionASTContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(141);
+				setState(142);
 				match(INTEGER);
 				}
 				break;
@@ -1119,7 +1145,7 @@ public class AlphaParser extends Parser {
 				_localctx = new IdPrimaryExpressionASTContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(142);
+				setState(143);
 				ident();
 				}
 				break;
@@ -1127,13 +1153,13 @@ public class AlphaParser extends Parser {
 				_localctx = new CallPrimaryExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(143);
-				ident();
 				setState(144);
-				match(PIZQ);
+				ident();
 				setState(145);
-				actualParamList();
+				match(PIZQ);
 				setState(146);
+				actualParamList();
+				setState(147);
 				match(PDER);
 				}
 				break;
@@ -1141,11 +1167,11 @@ public class AlphaParser extends Parser {
 				_localctx = new GroupPrimaryExpressionASTContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(148);
-				match(PIZQ);
 				setState(149);
-				expression();
+				match(PIZQ);
 				setState(150);
+				expression();
+				setState(151);
 				match(PDER);
 				}
 				break;
@@ -1194,25 +1220,25 @@ public class AlphaParser extends Parser {
 
 	public final ActualParamListContext actualParamList() throws RecognitionException {
 		ActualParamListContext _localctx = new ActualParamListContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_actualParamList);
+		enterRule(_localctx, 22, RULE_actualParamList);
 		int _la;
 		try {
 			_localctx = new ActualParamListASTContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(159);
+			setState(160);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PIZQ) | (1L << INTEGER) | (1L << IDENT))) != 0)) {
 				{
 				{
-				setState(154);
-				expression();
 				setState(155);
+				expression();
+				setState(156);
 				match(PyCOMA);
 				}
 				}
-				setState(161);
+				setState(162);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1279,16 +1305,16 @@ public class AlphaParser extends Parser {
 
 	public final OperatorContext operator() throws RecognitionException {
 		OperatorContext _localctx = new OperatorContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_operator);
+		enterRule(_localctx, 24, RULE_operator);
 		try {
-			setState(166);
+			setState(167);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case SUMA:
 				_localctx = new SumaASTContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(162);
+				setState(163);
 				match(SUMA);
 				}
 				break;
@@ -1296,7 +1322,7 @@ public class AlphaParser extends Parser {
 				_localctx = new RestaASTContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(163);
+				setState(164);
 				match(RESTA);
 				}
 				break;
@@ -1304,7 +1330,7 @@ public class AlphaParser extends Parser {
 				_localctx = new MultASTContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(164);
+				setState(165);
 				match(MULT);
 				}
 				break;
@@ -1312,7 +1338,7 @@ public class AlphaParser extends Parser {
 				_localctx = new DivASTContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(165);
+				setState(166);
 				match(DIV);
 				}
 				break;
@@ -1417,16 +1443,16 @@ public class AlphaParser extends Parser {
 
 	public final ComparationContext comparation() throws RecognitionException {
 		ComparationContext _localctx = new ComparationContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_comparation);
+		enterRule(_localctx, 26, RULE_comparation);
 		try {
-			setState(176);
+			setState(177);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case LT:
 				_localctx = new MenorASTContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(168);
+				setState(169);
 				match(LT);
 				}
 				break;
@@ -1434,7 +1460,7 @@ public class AlphaParser extends Parser {
 				_localctx = new MayorASTContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(169);
+				setState(170);
 				match(GT);
 				}
 				break;
@@ -1442,7 +1468,7 @@ public class AlphaParser extends Parser {
 				_localctx = new MenorIgualASTContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(170);
+				setState(171);
 				match(LE);
 				}
 				break;
@@ -1450,7 +1476,7 @@ public class AlphaParser extends Parser {
 				_localctx = new MayorIgualASTContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(171);
+				setState(172);
 				match(GE);
 				}
 				break;
@@ -1458,7 +1484,7 @@ public class AlphaParser extends Parser {
 				_localctx = new IgualASTContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(172);
+				setState(173);
 				match(EQUAL);
 				}
 				break;
@@ -1466,7 +1492,7 @@ public class AlphaParser extends Parser {
 				_localctx = new DiferenteASTContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(173);
+				setState(174);
 				match(NOT_EQUAL);
 				}
 				break;
@@ -1474,7 +1500,7 @@ public class AlphaParser extends Parser {
 				_localctx = new AndASTContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(174);
+				setState(175);
 				match(AND);
 				}
 				break;
@@ -1482,66 +1508,12 @@ public class AlphaParser extends Parser {
 				_localctx = new OrASTContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(175);
+				setState(176);
 				match(OR);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class PrintExpressionContext extends ParserRuleContext {
-		public PrintExpressionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_printExpression; }
-	 
-		public PrintExpressionContext() { }
-		public void copyFrom(PrintExpressionContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class PrintExpressionASTContext extends PrintExpressionContext {
-		public TerminalNode PUTS() { return getToken(AlphaParser.PUTS, 0); }
-		public TerminalNode PIZQ() { return getToken(AlphaParser.PIZQ, 0); }
-		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
-		}
-		public TerminalNode PDER() { return getToken(AlphaParser.PDER, 0); }
-		public PrintExpressionASTContext(PrintExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof AlphaParserVisitor ) return ((AlphaParserVisitor<? extends T>)visitor).visitPrintExpressionAST(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final PrintExpressionContext printExpression() throws RecognitionException {
-		PrintExpressionContext _localctx = new PrintExpressionContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_printExpression);
-		try {
-			_localctx = new PrintExpressionASTContext(_localctx);
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(178);
-			match(PUTS);
-			setState(179);
-			match(PIZQ);
-			setState(180);
-			expression();
-			setState(181);
-			match(PDER);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1585,7 +1557,7 @@ public class AlphaParser extends Parser {
 			_localctx = new IdentASTContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(183);
+			setState(179);
 			match(IDENT);
 			}
 		}
@@ -1601,63 +1573,62 @@ public class AlphaParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\62\u00bc\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\62\u00b8\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\3\2\3\2\3\3\3\3\3"+
 		"\3\7\3&\n\3\f\3\16\3)\13\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\62\n\4\3\4"+
 		"\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3"+
-		"\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4N\n\4\3\5\3\5\3\5\7\5S\n\5\f\5\16\5"+
-		"V\13\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6a\n\6\3\7\3\7\3\7\3\7\3"+
-		"\7\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\7\bq\n\b\f\b\16\bt\13\b\3\t\3\t"+
-		"\3\t\3\t\5\tz\n\t\3\n\3\n\3\n\3\n\7\n\u0080\n\n\f\n\16\n\u0083\13\n\3"+
-		"\n\3\n\3\n\3\n\7\n\u0089\n\n\f\n\16\n\u008c\13\n\5\n\u008e\n\n\3\13\3"+
-		"\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\5\13\u009b\n\13\3\f\3"+
-		"\f\3\f\7\f\u00a0\n\f\f\f\16\f\u00a3\13\f\3\r\3\r\3\r\3\r\5\r\u00a9\n\r"+
-		"\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\5\16\u00b3\n\16\3\17\3\17\3\17"+
-		"\3\17\3\17\3\20\3\20\3\20\2\2\21\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36"+
-		"\2\2\2\u00cd\2 \3\2\2\2\4\"\3\2\2\2\6M\3\2\2\2\bO\3\2\2\2\n`\3\2\2\2\f"+
-		"b\3\2\2\2\16r\3\2\2\2\20y\3\2\2\2\22\u008d\3\2\2\2\24\u009a\3\2\2\2\26"+
-		"\u00a1\3\2\2\2\30\u00a8\3\2\2\2\32\u00b2\3\2\2\2\34\u00b4\3\2\2\2\36\u00b9"+
-		"\3\2\2\2 !\5\6\4\2!\3\3\2\2\2\"\'\5\6\4\2#$\7\3\2\2$&\5\6\4\2%#\3\2\2"+
-		"\2&)\3\2\2\2\'%\3\2\2\2\'(\3\2\2\2(\5\3\2\2\2)\'\3\2\2\2*+\5\36\20\2+"+
-		",\7\5\2\2,-\5\22\n\2-N\3\2\2\2./\5\36\20\2/\61\7\6\2\2\60\62\5\22\n\2"+
-		"\61\60\3\2\2\2\61\62\3\2\2\2\62\63\3\2\2\2\63\64\7\7\2\2\64N\3\2\2\2\65"+
-		"\66\7\26\2\2\66\67\5\22\n\2\678\7\27\2\289\5\6\4\29:\7\30\2\2:;\5\6\4"+
-		"\2;N\3\2\2\2<=\7\31\2\2=>\5\22\n\2>?\7\32\2\2?@\5\6\4\2@N\3\2\2\2AB\7"+
-		"\33\2\2BC\5\b\5\2CD\7\34\2\2DE\5\6\4\2EN\3\2\2\2FG\7\35\2\2GH\5\4\3\2"+
-		"HI\7\36\2\2IN\3\2\2\2JK\7!\2\2KN\5\22\n\2LN\5\34\17\2M*\3\2\2\2M.\3\2"+
-		"\2\2M\65\3\2\2\2M<\3\2\2\2MA\3\2\2\2MF\3\2\2\2MJ\3\2\2\2ML\3\2\2\2N\7"+
-		"\3\2\2\2OT\5\n\6\2PQ\7\3\2\2QS\5\n\6\2RP\3\2\2\2SV\3\2\2\2TR\3\2\2\2T"+
-		"U\3\2\2\2U\t\3\2\2\2VT\3\2\2\2WX\7\37\2\2XY\7/\2\2YZ\7\b\2\2Za\5\22\n"+
-		"\2[\\\7 \2\2\\]\7/\2\2]^\7\4\2\2^a\5\20\t\2_a\5\f\7\2`W\3\2\2\2`[\3\2"+
-		"\2\2`_\3\2\2\2a\13\3\2\2\2bc\7\25\2\2cd\5\36\20\2de\7\6\2\2ef\5\16\b\2"+
-		"fg\7\7\2\2gh\7\4\2\2hi\5\20\t\2ij\5\6\4\2j\r\3\2\2\2kl\7/\2\2lm\7\4\2"+
-		"\2mn\5\20\t\2no\7\3\2\2oq\3\2\2\2pk\3\2\2\2qt\3\2\2\2rp\3\2\2\2rs\3\2"+
-		"\2\2s\17\3\2\2\2tr\3\2\2\2uz\7*\2\2vz\7(\2\2wz\7)\2\2xz\7/\2\2yu\3\2\2"+
-		"\2yv\3\2\2\2yw\3\2\2\2yx\3\2\2\2z\21\3\2\2\2{\u0081\5\24\13\2|}\5\32\16"+
-		"\2}~\5\24\13\2~\u0080\3\2\2\2\177|\3\2\2\2\u0080\u0083\3\2\2\2\u0081\177"+
-		"\3\2\2\2\u0081\u0082\3\2\2\2\u0082\u008e\3\2\2\2\u0083\u0081\3\2\2\2\u0084"+
-		"\u008a\5\24\13\2\u0085\u0086\5\30\r\2\u0086\u0087\5\24\13\2\u0087\u0089"+
-		"\3\2\2\2\u0088\u0085\3\2\2\2\u0089\u008c\3\2\2\2\u008a\u0088\3\2\2\2\u008a"+
-		"\u008b\3\2\2\2\u008b\u008e\3\2\2\2\u008c\u008a\3\2\2\2\u008d{\3\2\2\2"+
-		"\u008d\u0084\3\2\2\2\u008e\23\3\2\2\2\u008f\u009b\7-\2\2\u0090\u009b\5"+
-		"\36\20\2\u0091\u0092\5\36\20\2\u0092\u0093\7\6\2\2\u0093\u0094\5\26\f"+
-		"\2\u0094\u0095\7\7\2\2\u0095\u009b\3\2\2\2\u0096\u0097\7\6\2\2\u0097\u0098"+
-		"\5\22\n\2\u0098\u0099\7\7\2\2\u0099\u009b\3\2\2\2\u009a\u008f\3\2\2\2"+
-		"\u009a\u0090\3\2\2\2\u009a\u0091\3\2\2\2\u009a\u0096\3\2\2\2\u009b\25"+
-		"\3\2\2\2\u009c\u009d\5\22\n\2\u009d\u009e\7\3\2\2\u009e\u00a0\3\2\2\2"+
-		"\u009f\u009c\3\2\2\2\u00a0\u00a3\3\2\2\2\u00a1\u009f\3\2\2\2\u00a1\u00a2"+
-		"\3\2\2\2\u00a2\27\3\2\2\2\u00a3\u00a1\3\2\2\2\u00a4\u00a9\7\21\2\2\u00a5"+
-		"\u00a9\7\22\2\2\u00a6\u00a9\7\23\2\2\u00a7\u00a9\7\24\2\2\u00a8\u00a4"+
-		"\3\2\2\2\u00a8\u00a5\3\2\2\2\u00a8\u00a6\3\2\2\2\u00a8\u00a7\3\2\2\2\u00a9"+
-		"\31\3\2\2\2\u00aa\u00b3\7\16\2\2\u00ab\u00b3\7\r\2\2\u00ac\u00b3\7\t\2"+
-		"\2\u00ad\u00b3\7\n\2\2\u00ae\u00b3\7\13\2\2\u00af\u00b3\7\f\2\2\u00b0"+
-		"\u00b3\7\17\2\2\u00b1\u00b3\7\20\2\2\u00b2\u00aa\3\2\2\2\u00b2\u00ab\3"+
-		"\2\2\2\u00b2\u00ac\3\2\2\2\u00b2\u00ad\3\2\2\2\u00b2\u00ae\3\2\2\2\u00b2"+
-		"\u00af\3\2\2\2\u00b2\u00b0\3\2\2\2\u00b2\u00b1\3\2\2\2\u00b3\33\3\2\2"+
-		"\2\u00b4\u00b5\7\'\2\2\u00b5\u00b6\7\6\2\2\u00b6\u00b7\5\22\n\2\u00b7"+
-		"\u00b8\7\7\2\2\u00b8\35\3\2\2\2\u00b9\u00ba\7/\2\2\u00ba\37\3\2\2\2\20"+
-		"\'\61MT`ry\u0081\u008a\u008d\u009a\u00a1\u00a8\u00b2";
+		"\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4M\n\4\3\5\3\5\3\5\7\5R\n\5\f\5\16\5U\13"+
+		"\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6`\n\6\3\7\3\7\3\7\3\7\3\7\3"+
+		"\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\7\bp\n\b\f\b\16\bs\13\b\3\t\3\t\3\n"+
+		"\3\n\3\n\3\n\3\n\7\n|\n\n\f\n\16\n\177\13\n\3\n\3\n\3\n\3\n\7\n\u0085"+
+		"\n\n\f\n\16\n\u0088\13\n\5\n\u008a\n\n\3\13\3\13\3\13\5\13\u008f\n\13"+
+		"\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\f\u009c\n\f\3\r\3\r\3\r"+
+		"\7\r\u00a1\n\r\f\r\16\r\u00a4\13\r\3\16\3\16\3\16\3\16\5\16\u00aa\n\16"+
+		"\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\5\17\u00b4\n\17\3\20\3\20\3\20"+
+		"\2\2\21\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36\2\2\2\u00c8\2 \3\2\2\2"+
+		"\4\"\3\2\2\2\6L\3\2\2\2\bN\3\2\2\2\n_\3\2\2\2\fa\3\2\2\2\16q\3\2\2\2\20"+
+		"t\3\2\2\2\22\u0089\3\2\2\2\24\u008e\3\2\2\2\26\u009b\3\2\2\2\30\u00a2"+
+		"\3\2\2\2\32\u00a9\3\2\2\2\34\u00b3\3\2\2\2\36\u00b5\3\2\2\2 !\5\6\4\2"+
+		"!\3\3\2\2\2\"\'\5\6\4\2#$\7\3\2\2$&\5\6\4\2%#\3\2\2\2&)\3\2\2\2\'%\3\2"+
+		"\2\2\'(\3\2\2\2(\5\3\2\2\2)\'\3\2\2\2*+\5\36\20\2+,\7\5\2\2,-\5\22\n\2"+
+		"-M\3\2\2\2./\5\36\20\2/\61\7\6\2\2\60\62\5\22\n\2\61\60\3\2\2\2\61\62"+
+		"\3\2\2\2\62\63\3\2\2\2\63\64\7\7\2\2\64M\3\2\2\2\65\66\7\26\2\2\66\67"+
+		"\5\22\n\2\678\7\27\2\289\5\6\4\29:\7\30\2\2:;\5\6\4\2;M\3\2\2\2<=\7\31"+
+		"\2\2=>\5\22\n\2>?\7\32\2\2?@\5\6\4\2@M\3\2\2\2AB\7\33\2\2BC\5\b\5\2CD"+
+		"\7\34\2\2DE\5\6\4\2EM\3\2\2\2FG\7\35\2\2GH\5\4\3\2HI\7\36\2\2IM\3\2\2"+
+		"\2JK\7!\2\2KM\5\22\n\2L*\3\2\2\2L.\3\2\2\2L\65\3\2\2\2L<\3\2\2\2LA\3\2"+
+		"\2\2LF\3\2\2\2LJ\3\2\2\2M\7\3\2\2\2NS\5\n\6\2OP\7\3\2\2PR\5\n\6\2QO\3"+
+		"\2\2\2RU\3\2\2\2SQ\3\2\2\2ST\3\2\2\2T\t\3\2\2\2US\3\2\2\2VW\7\37\2\2W"+
+		"X\7/\2\2XY\7\b\2\2Y`\5\22\n\2Z[\7 \2\2[\\\7/\2\2\\]\7\4\2\2]`\5\20\t\2"+
+		"^`\5\f\7\2_V\3\2\2\2_Z\3\2\2\2_^\3\2\2\2`\13\3\2\2\2ab\7\25\2\2bc\5\36"+
+		"\20\2cd\7\6\2\2de\5\16\b\2ef\7\7\2\2fg\7\4\2\2gh\5\20\t\2hi\5\6\4\2i\r"+
+		"\3\2\2\2jk\7/\2\2kl\7\4\2\2lm\5\20\t\2mn\7\3\2\2np\3\2\2\2oj\3\2\2\2p"+
+		"s\3\2\2\2qo\3\2\2\2qr\3\2\2\2r\17\3\2\2\2sq\3\2\2\2tu\5\24\13\2u\21\3"+
+		"\2\2\2v\u008a\7/\2\2w}\5\26\f\2xy\5\34\17\2yz\5\26\f\2z|\3\2\2\2{x\3\2"+
+		"\2\2|\177\3\2\2\2}{\3\2\2\2}~\3\2\2\2~\u008a\3\2\2\2\177}\3\2\2\2\u0080"+
+		"\u0086\5\26\f\2\u0081\u0082\5\32\16\2\u0082\u0083\5\26\f\2\u0083\u0085"+
+		"\3\2\2\2\u0084\u0081\3\2\2\2\u0085\u0088\3\2\2\2\u0086\u0084\3\2\2\2\u0086"+
+		"\u0087\3\2\2\2\u0087\u008a\3\2\2\2\u0088\u0086\3\2\2\2\u0089v\3\2\2\2"+
+		"\u0089w\3\2\2\2\u0089\u0080\3\2\2\2\u008a\23\3\2\2\2\u008b\u008f\7*\2"+
+		"\2\u008c\u008f\7(\2\2\u008d\u008f\7)\2\2\u008e\u008b\3\2\2\2\u008e\u008c"+
+		"\3\2\2\2\u008e\u008d\3\2\2\2\u008f\25\3\2\2\2\u0090\u009c\7-\2\2\u0091"+
+		"\u009c\5\36\20\2\u0092\u0093\5\36\20\2\u0093\u0094\7\6\2\2\u0094\u0095"+
+		"\5\30\r\2\u0095\u0096\7\7\2\2\u0096\u009c\3\2\2\2\u0097\u0098\7\6\2\2"+
+		"\u0098\u0099\5\22\n\2\u0099\u009a\7\7\2\2\u009a\u009c\3\2\2\2\u009b\u0090"+
+		"\3\2\2\2\u009b\u0091\3\2\2\2\u009b\u0092\3\2\2\2\u009b\u0097\3\2\2\2\u009c"+
+		"\27\3\2\2\2\u009d\u009e\5\22\n\2\u009e\u009f\7\3\2\2\u009f\u00a1\3\2\2"+
+		"\2\u00a0\u009d\3\2\2\2\u00a1\u00a4\3\2\2\2\u00a2\u00a0\3\2\2\2\u00a2\u00a3"+
+		"\3\2\2\2\u00a3\31\3\2\2\2\u00a4\u00a2\3\2\2\2\u00a5\u00aa\7\21\2\2\u00a6"+
+		"\u00aa\7\22\2\2\u00a7\u00aa\7\23\2\2\u00a8\u00aa\7\24\2\2\u00a9\u00a5"+
+		"\3\2\2\2\u00a9\u00a6\3\2\2\2\u00a9\u00a7\3\2\2\2\u00a9\u00a8\3\2\2\2\u00aa"+
+		"\33\3\2\2\2\u00ab\u00b4\7\16\2\2\u00ac\u00b4\7\r\2\2\u00ad\u00b4\7\t\2"+
+		"\2\u00ae\u00b4\7\n\2\2\u00af\u00b4\7\13\2\2\u00b0\u00b4\7\f\2\2\u00b1"+
+		"\u00b4\7\17\2\2\u00b2\u00b4\7\20\2\2\u00b3\u00ab\3\2\2\2\u00b3\u00ac\3"+
+		"\2\2\2\u00b3\u00ad\3\2\2\2\u00b3\u00ae\3\2\2\2\u00b3\u00af\3\2\2\2\u00b3"+
+		"\u00b0\3\2\2\2\u00b3\u00b1\3\2\2\2\u00b3\u00b2\3\2\2\2\u00b4\35\3\2\2"+
+		"\2\u00b5\u00b6\7/\2\2\u00b6\37\3\2\2\2\20\'\61LS_q}\u0086\u0089\u008e"+
+		"\u009b\u00a2\u00a9\u00b3";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

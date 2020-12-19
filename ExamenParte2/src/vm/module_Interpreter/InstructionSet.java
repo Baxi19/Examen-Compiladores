@@ -46,12 +46,12 @@ public class InstructionSet {
         try
         {
             if (actualParamList.size() != 0){
-                almacenLocal.get(almacenLocal.size() - 1).setValue(name, actualParamList.get(0)); //el valor por defecto es el parámetro actual de turno
+                almacenLocal.get(almacenLocal.size()-1).setValue(name, actualParamList.get(0)); //el valor por defecto es el parámetro actual de turno
                 actualParamList.remove(0); //se elimina el parámetro actual de turno
             }
             else{
                 //declara el elemento "name" en el almacen LOCAL con valor por defecto 0
-                almacenLocal.get(almacenLocal.size() - 1).setValue(name, 0);
+                almacenLocal.get(almacenLocal.size()-1).setValue(name, 0);
             }
         }
         catch (Exception e){
@@ -229,8 +229,7 @@ public class InstructionSet {
         }
     }
 
-    private void runEND()
-    {
+    private void runEND(){
         //acaba la corrida y limpia/elimina las estructuras según sea el caso
     }
 
@@ -240,7 +239,7 @@ public class InstructionSet {
         Object opn2= myStackExprs.pop();
         Object opn1= myStackExprs.pop();
         try{
-            if (op.equals("==")){
+            if (op.equals("=")){
                 if (opn1 == opn2){
                     myStackExprs.push(false);
                 }

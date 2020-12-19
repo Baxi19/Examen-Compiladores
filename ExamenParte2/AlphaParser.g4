@@ -14,8 +14,7 @@ singleCommand   :ident ASIGN expression                                         
                 | WHILE expression DO singleCommand                                                                     #whileSingleCommandAST
                 | LET declaration IN singleCommand                                                                      #letSingleCommandAST
                 | BEGIN command END                                                                                     #blockSingleCommandAST
-                | RETURN expression                                                                                     #returnSingleCommandAST
-                | printExpression                                                                                       #printAST;
+                | RETURN expression                                                                                     #returnSingleCommandAST;
 
 declaration     : singleDeclaration (PyCOMA singleDeclaration)*                                                         #declarationAST;
 
@@ -27,13 +26,14 @@ methodDeclaration: FN ident PIZQ formalParamList PDER DOSPUNTOS typeDenoter sing
 
 formalParamList : (IDENT DOSPUNTOS typeDenoter PyCOMA)*                                                                 #formalParamListAST;
 
-typeDenoter     : STR                                                                                                   #typeDenoterStringAST
-                | BOOLEAN                                                                                               #typeDenoterBooleanAST
-                | INT                                                                                                   #typeDenoterIntAST
-                | IDENT                                                                                                 #typeDenoterIdentAST;
+typeDenoter     : typeLiteral                                                                                           #typeDenoterIdentAST;
 
 expression      : primaryExpression (comparation primaryExpression)*                                                    #expressionComparationAST
                 | primaryExpression (operator primaryExpression)*                                                       #expressionOperatorAST;
+
+typeLiteral     : STR                                                                                                   #typeDenoterStringAST
+                | BOOLEAN                                                                                               #typeDenoterBooleanAST
+                | INT                                                                                                   #typeDenoterIntAST;
 
 primaryExpression: INTEGER                                                                                              #numPrimaryExpressionAST
                 | ident                                                                                                 #idPrimaryExpressionAST
@@ -55,10 +55,6 @@ comparation     : LT                                                            
                 | NOT_EQUAL                                                                                             #diferenteAST
                 | AND                                                                                                   #andAST
                 | OR                                                                                                    #orAST;
-
-//-------------------------------------------------------------------------------------------------------------------
-//puts ( ... )
-printExpression                 : PUTS PIZQ expression PDER                                                             #printExpressionAST;
 
 ident
 locals [SingleDeclarationContext decl = null]: IDENT                                                                    #identAST;

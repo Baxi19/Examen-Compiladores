@@ -1,21 +1,33 @@
 let
-    var g1:int;
-    var g2:int;
-    var g3:string;
-    var g4:boolean;
-    fn sumatoria( x:int; ) : int
-    let
-        var sum : int
-    in
-    begin
-        g1:=1;
-        g2:=2;
-        if x then
-            sum := x + sumatoria(x-1;)
-        else
-            sum:=0;
+  var num : int;
+  var num2 : int;
+  var a : string;
+  var b : boolean;
+  var temp : int;
+  fn sumatoria( x:int; ) : int
+      let
+          var sum : int
+      in
+      begin
+          g1:=1;
+          g2:=2;
+          if x then
+              sum := x + sumatoria(x-1;)
+          else
+              sum:=0;
 
-        return sum
-    end
+          return sum
+      end
 in
-    print(sumatoria(3;));
+begin
+  num := 1;
+  a := 1;
+  b := 0;
+  while (num) do
+  begin
+    temp := a;
+    a := a + b - c * 2 / 5;
+    b := temp + a;
+    num := num - 1
+  end
+end
