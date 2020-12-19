@@ -13,5 +13,7 @@
 # II Semestre, 2020
 
 ---
+
 :boom: Importante:  El resumen de cada ejercicio se encuentra en un archivo **Readme.md** que esta dentro de cada proyecto :exclamation:
+
 ---
