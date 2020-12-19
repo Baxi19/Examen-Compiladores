@@ -32,8 +32,7 @@ public class IdentificationTable {
         }
     }
 
-    public class MethodIdent
-    {
+    public class MethodIdent{
         public Token token; // Identificador a insertado
         public int type; // Tipo de dato (string char, int, float, bool, clase)
         public int value;
@@ -64,8 +63,7 @@ public class IdentificationTable {
         return i;
     }
 
-    public Ident searchIdent(String nombre)
-    {
+    public Ident searchIdent(String nombre){
         Ident temp = null;
         for(int i = (tablaVariables.size()); i > 0; i--){
             Ident id = tablaVariables.get(i-1);
@@ -87,15 +85,13 @@ public class IdentificationTable {
         nivelActual--;
     }
 
-    public void insertMethodIdent(Token token, String methodName, int type, ArrayList<Pair<Integer,String>> parameters)
-    {
+    public void insertMethodIdent(Token token, String methodName, int type, ArrayList<Pair<Integer,String>> parameters){
         MethodIdent methodIdent = new MethodIdent(token, methodName, type, parameters);
         tablaMetodos.add(methodIdent);
 
     }
 
-    public MethodIdent searchMethodIdent(String methodIdent)
-    {
+    public MethodIdent searchMethodIdent(String methodIdent){
         for (MethodIdent method : tablaMetodos) {
             if (method.methodName.equals(methodIdent) && method.nivel <= nivelActual) {
                 return method;
