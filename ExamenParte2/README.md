@@ -22,4 +22,4 @@ Para el uso de los métodos solo trabajan de manera global, si trabajan con nive
 ## :star: Resumen General :star:
 - En resumen, el análisis sintáctico para el parser de Alpha estaría funcionando al 100%
 - La Maquina Virtual se migro el codigo a java y esta trabajando 100%
-- La parte de generacion de codigo se avanzo bastante sin embargo no se pudo hacer que trabajara de manera funcional debido al tiempo =/
+- La parte de generacion de codigo se avanzo bastante sin embargo no se pudo hacer que trabajara de manera funcional debido al tiempo :sweat_smile:
