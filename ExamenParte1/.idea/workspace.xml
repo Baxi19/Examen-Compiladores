@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ca08810-5e50-4176-86ac-534d3a4f4d4f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/XMLScanner.g4" beforeDir="false" afterPath="$PROJECT_DIR$/XMLScanner.g4" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,10 +82,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="1557" height="202" key="GridCell.Tab.0.right/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608347960510" />
-    <state x="476" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1608243909706">
+    <state x="476" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1608351084642">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="476" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608243909706" />
+    <state x="476" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1608351084642" />
   </component>
   <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
     <option name="sizePresets">

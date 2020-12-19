@@ -1,71 +1,37 @@
 lexer grammar AlphaScanner;
+//symbols
+PyCOMA  : ';' ;
+ASSIGN  : ':=';
+PIZQ    : '(';
+PDER    : ')';
+VIR     : '~';
+DOSPUN  : ':';
+SUM     : '+';
+SUB     : '-';
+MUL     : '*';
+DIV     : '/';
 
-//Simbolos
-PyCOMA      : ';';
-DOSPUNTOS   : ':';
-ASIGN       : ':=';
-PIZQ        : '(';
-PDER        : ')';
-VIR         : '~';
-
-//-------------------------------------------------------------------------------------------------------------------
-// comparision
-LE      : '<=';
-GE      : '>=';
-EQUAL   : '=';
-NOT_EQUAL : '!=';
-GT      : '>';
-LT      : '<';
-AND     : '&';
-OR     : '|';
-
-//-------------------------------------------------------------------------------------------------------------------
-//Operadores
-SUMA        : '+';
-RESTA       : '-';
-MULT        : '*';
-DIV         : '/';
-
-//-------------------------------------------------------------------------------------------------------------------
-//Palabras Reservadas
-FN      : 'fn';
-IF      : 'if';
+//reserved words
+IF      : 'if' ;
+WHILE   : 'while' ;
+LET     : 'let';
 THEN    : 'then';
 ELSE    : 'else';
-WHILE   : 'while';
-DO      : 'do';
-LET     : 'let';
 IN      : 'in';
+DO      : 'do';
 BEGIN   : 'begin';
 END     : 'end';
 CONST   : 'const';
 VAR     : 'var';
+VOID    : 'void';
 RETURN  : 'return';
 
+// regular expresions
+NUM : [1-9][0-9]* | '0';
+CHAR : '\'' ([a-z]|[0-9]|' '|'!')? '\'';
+IDENT : [a-z]([a-z]|[0-9])*;
 
-//-------------------------------------------------------------------------------------------------------------------
-// Funtions
-LEN     : 'len';
-FIRST   : 'first';
-LAST    : 'last';
-REST    : 'rest';
-PUSH    : 'push';
-PUTS    : 'puts';
-
-
-//-------------------------------------------------------------------------------------------------------------------
-// Types
-BOOLEAN : 'boolean';
-INT     : 'int';
-STR     : 'string';
-TRUE    : 'true';
-FALSE   : 'false';
-INTEGER : [0-9]([0-9])*;
-STRING  : '"' (~["])* '"';
-IDENT   : [a-zA-Z]([a-zA-Z]|[0-9]|'_')*;
-
-//-------------------------------------------------------------------------------------------------------------------
-// Skiped
-WS              : [ \r\t\n]+                                        -> skip ;
-SINGLE_COMMENT  : '//' ~[\r\n]* '\r'? '\n'                          -> skip ;
-BLOCK_COMMENT   : '/*' (.|BLOCK_COMMENT|SINGLE_COMMENT)* '*/'       -> skip ;
+// skiped
+WS  :   [ \t\n\r]+ -> skip ;
+LINECOMENT      :'//' ~[\r\n]* -> skip;         // Comentario de una línea
+MULTILINECOMENT : '/*' .*? '*/' -> skip;        // Bloque de comentario

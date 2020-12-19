@@ -1,60 +1,46 @@
 parser grammar AlphaParser;
 
 options {
-  tokenVocab = AlphaScanner;
+    tokenVocab = AlphaScanner;
 }
 
-program         : singleCommand                                                                                         #programAST;
 
-command         : singleCommand (PyCOMA singleCommand)*                                                                 #commandAST;
+program             : singleCommand EOF                                              #programAST;
 
-singleCommand   :ident ASIGN expression                                                                                 #assignSingleCommandAST
-                | ident PIZQ expression? PDER                                                                           #callSingleCommandAST
-                | IF expression THEN singleCommand ELSE singleCommand                                                   #ifSingleCommandAST
-                | WHILE expression DO singleCommand                                                                     #whileSingleCommandAST
-                | LET declaration IN singleCommand                                                                      #letSingleCommandAST
-                | BEGIN command END                                                                                     #blockSingleCommandAST
-                | RETURN expression                                                                                     #returnSingleCommandAST;
+command             : singleCommand (PyCOMA singleCommand)*                          #commandAST;
 
-declaration     : singleDeclaration (PyCOMA singleDeclaration)*                                                         #declarationAST;
+singleCommand       : ident ASSIGN expression                                        #assignSCAST
+                    | ident PIZQ actualParam? PDER                                   #callSCAST
+                    | IF expression THEN singleCommand ELSE singleCommand            #ifSCAST
+                    | WHILE expression DO singleCommand                              #whileSCAST
+                    | LET declaration IN command                                     #letSCAST
+                    | BEGIN command? END                                             #beginSCAST
+                    | RETURN expression                                              #returnSCAST;
 
-singleDeclaration: CONST IDENT VIR expression                                                                           #constSingleDeclarationAST
-    	        | VAR IDENT DOSPUNTOS typeDenoter                                                                       #varSingleDeclarationAST
-    	        | methodDeclaration                                                                                     #methodSingleDeclarationAST;
+actualParam         : expression (PyCOMA expression)*                                #actualParamAST;
 
-methodDeclaration: FN ident PIZQ formalParamList PDER DOSPUNTOS typeDenoter singleCommand                               #methodDeclararionAST;
+declaration         : singleDeclaration (PyCOMA singleDeclaration)*                  #declarationAST;
 
-formalParamList : (IDENT DOSPUNTOS typeDenoter PyCOMA)*                                                                 #formalParamListAST;
+singleDeclaration   : CONST typedenoter IDENT VIR expression                         #constSDeclAST
+    	            | varDeclaration                                                 #varSDeclAST
+    	            | (typedenoter | VOID) IDENT PIZQ paramDecls? PDER singleCommand #methodSDeclAST;
 
-typeDenoter     : typeLiteral                                                                                           #typeDenoterIdentAST;
 
-expression      : primaryExpression (comparation primaryExpression)*                                                    #expressionComparationAST
-                | primaryExpression (operator primaryExpression)*                                                       #expressionOperatorAST;
+varDeclaration      : VAR IDENT DOSPUN typedenoter                                  #varDeclAST;
 
-typeLiteral     : STR                                                                                                   #typeDenoterStringAST
-                | BOOLEAN                                                                                               #typeDenoterBooleanAST
-                | INT                                                                                                   #typeDenoterIntAST;
+paramDecls          : varDeclaration (PyCOMA varDeclaration)*                       #paramDeclsAST;
 
-primaryExpression: INTEGER                                                                                              #numPrimaryExpressionAST
-                | ident                                                                                                 #idPrimaryExpressionAST
-                | ident PIZQ actualParamList PDER                                                                       #callPrimaryExpression
-                | PIZQ expression PDER                                                                                  #groupPrimaryExpressionAST;
+typedenoter         : IDENT                                                         #typeDenoterAST;
 
-actualParamList : (expression PyCOMA)*                                                                                  #actualParamListAST;
+expression          : primaryExpression (operator primaryExpression)*               #expressionAST;
 
-operator        : SUMA                                                                                                  #sumaAST
-                | RESTA                                                                                                 #restaAST
-                | MULT                                                                                                  #multAST
-                | DIV                                                                                                   #divAST;
+primaryExpression   : NUM                                                           #numPEAST
+                    | ident                                                         #identPEAST
+                    | CHAR                                                          #charPEAST
+                    | PIZQ expression PDER                                          #groupPEAST;
 
-comparation     : LT                                                                                                    #menorAST
-                | GT                                                                                                    #mayorAST
-                | LE                                                                                                    #menorIgualAST
-                | GE                                                                                                    #mayorIgualAST
-                | EQUAL                                                                                                 #igualAST
-                | NOT_EQUAL                                                                                             #diferenteAST
-                | AND                                                                                                   #andAST
-                | OR                                                                                                    #orAST;
+operator            : SUM | SUB | MUL | DIV                                         #operatorAST;
 
 ident
-locals [SingleDeclarationContext decl = null]: IDENT                                                                    #identAST;
+locals [VarDeclASTContext decl=null]
+                    : IDENT                                                         #identAST;
